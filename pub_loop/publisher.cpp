@@ -16,7 +16,7 @@ int main()
     std::string msg { };
     auto js_pub = emscripten::val::module_property("js_pub");
 
-    for (int i=0; i<15; i++)
+    for (int i=0; i<5; i++)
     {
         msg = "Hi there " + std::to_string(i);
 
@@ -25,7 +25,7 @@ int main()
         elapsed_seconds = end_t - start_t;
 
         std::string msg_sent = js_pub(msg, elapsed_seconds.count()).as<std::string>();
-        // std::cout << "Message published: " << msg << '\n';
+        std::cout << "[PUB]: " << msg << '\n';
 
         std::this_thread::sleep_for(std::chrono::milliseconds(1029));
     }
